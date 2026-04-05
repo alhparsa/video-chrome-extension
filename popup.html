@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 240px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #1a1a2e;
+    color: #e0e0e0;
+    padding: 16px;
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .header svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+  .header h1 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+  }
+  #toggle-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #4285f4;
+    color: #fff;
+    transition: background 0.15s;
+  }
+  #toggle-btn:hover { background: #3367d6; }
+  #toggle-btn.active { background: #e74c3c; }
+  #toggle-btn.active:hover { background: #c0392b; }
+  #toggle-btn:disabled {
+    background: #333;
+    color: #666;
+    cursor: default;
+  }
+  .status {
+    font-size: 11px;
+    color: #888;
+    text-align: center;
+    margin-top: 8px;
+  }
+  .shortcut {
+    font-size: 10px;
+    color: #666;
+    text-align: center;
+    margin-top: 4px;
+  }
+  .shortcut kbd {
+    background: #2a2a3e;
+    border: 1px solid #444;
+    border-radius: 3px;
+    padding: 1px 4px;
+    font-family: inherit;
+    font-size: 10px;
+  }
+  .divider {
+    border: none;
+    border-top: 1px solid #2a2a3e;
+    margin: 14px 0 12px;
+  }
+  .bmac-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-decoration: none;
+    color: #ffdd00;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 8px;
+    border-radius: 8px;
+    background: rgba(255, 221, 0, 0.08);
+    transition: background 0.15s;
+  }
+  .bmac-link:hover { background: rgba(255, 221, 0, 0.15); }
+  .bmac-link svg { width: 18px; height: 18px; flex-shrink: 0; }
+  .settings-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-decoration: none;
+    color: #aaa;
+    font-size: 12px;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background 0.15s, color 0.15s;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    margin-bottom: 8px;
+  }
+  .settings-link:hover { background: rgba(255,255,255,0.06); color: #fff; }
+  .settings-link svg { width: 16px; height: 16px; flex-shrink: 0; }
+</style>
+</head>
+<body>
+  <div class="header">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+    </svg>
+    <h1>Full Window Video</h1>
+  </div>
+
+  <button id="toggle-btn" disabled>No video detected</button>
+  <div class="status" id="status"></div>
+  <div class="shortcut">Shortcut: <kbd>Ctrl</kbd> + <kbd>F</kbd></div>
+
+  <hr class="divider">
+
+  <button class="settings-link" id="settings">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+    </svg>
+    Settings
+  </button>
+
+  <a class="bmac-link" href="https://buymeacoffee.com/alhparsa" target="_blank" id="bmac">
+    <svg viewBox="0 0 24 24" fill="#ffdd00" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 19h14a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2zM7 8V5a1 1 0 0 1 1-1h1a1 1 0 0 1 0 2H8.5M12 8V5a1 1 0 0 1 1-1h1a1 1 0 0 1 0 2h-.5M17 8V5a1 1 0 0 1 1-1h1a1 1 0 0 1 0 2h-.5"/>
+    </svg>
+    Buy me a coffee
+  </a>
+
+  <script src="popup.js"></script>
+</body>
+</html>
