@@ -1,0 +1,63 @@
+:host {
+  all: initial;
+}
+
+.vp-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2147483647;
+  --vp-chip-bg: rgba(15, 23, 42, 0.88);
+  --vp-chip-bg-strong: rgba(37, 99, 235, 0.92);
+  --vp-chip-fg: #f8fafc;
+  --vp-chip-shadow: 0 12px 32px rgba(15, 23, 42, 0.28);
+}
+
+.vp-chip {
+  position: fixed;
+  pointer-events: auto;
+  border: 0;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font: 700 12px/1.1 ui-rounded, "SF Pro Rounded", "Avenir Next", "Nunito Sans", sans-serif;
+  letter-spacing: 0.02em;
+  color: var(--vp-chip-fg);
+  background: var(--vp-chip-bg);
+  box-shadow: var(--vp-chip-shadow);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 160ms ease, transform 160ms ease, background 160ms ease;
+  backdrop-filter: blur(10px);
+}
+
+.vp-chip-small {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.vp-chip[data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.vp-chip[data-accent="true"] {
+  background: linear-gradient(135deg, var(--vp-chip-bg-strong), rgba(14, 116, 144, 0.92));
+}
+
+.vp-chip:hover {
+  background: rgba(30, 41, 59, 0.98);
+}
+
+@media (prefers-color-scheme: light) {
+  .vp-layer {
+    --vp-chip-bg: rgba(17, 24, 39, 0.84);
+    --vp-chip-bg-strong: rgba(29, 78, 216, 0.94);
+    --vp-chip-shadow: 0 10px 24px rgba(15, 23, 42, 0.16);
+  }
+}

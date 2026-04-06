@@ -1,0 +1,9 @@
+Velocity Player gives you direct, client-side control over video and audio on any website.
+
+Current scaffold highlights:
+- playback speed controls
+- theater mode
+- floating overlay controls
+- keyboard shortcuts
+
+Roadmap modules in this codebase cover audio boost, EQ, screenshots, looping, presets, and per-site memory.

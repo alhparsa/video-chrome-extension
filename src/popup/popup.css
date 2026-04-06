@@ -1,0 +1,165 @@
+:root {
+  color-scheme: dark;
+  --bg: radial-gradient(circle at top left, #164e63 0%, #0f172a 45%, #020617 100%);
+  --panel: rgba(15, 23, 42, 0.78);
+  --panel-border: rgba(148, 163, 184, 0.18);
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #38bdf8;
+  --accent-strong: #0ea5e9;
+  --danger: #fb7185;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 320px;
+  min-height: 360px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-rounded, "SF Pro Rounded", "Avenir Next", "Nunito Sans", sans-serif;
+}
+
+.popup-shell {
+  padding: 18px;
+}
+
+.hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 10px;
+  color: #7dd3fc;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.status-pill {
+  padding: 8px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(125, 211, 252, 0.16);
+  white-space: nowrap;
+}
+
+.card {
+  padding: 16px;
+  border-radius: 20px;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  box-shadow: 0 16px 40px rgba(2, 6, 23, 0.28);
+  backdrop-filter: blur(12px);
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.label {
+  margin: 0 0 4px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.value {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.rate {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+  color: #7dd3fc;
+}
+
+.slider-block {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.slider-block input {
+  width: 100%;
+  margin-top: 10px;
+  accent-color: var(--accent);
+}
+
+.preset-row,
+.action-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.preset-row {
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 12px;
+}
+
+.action-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+button {
+  border: 0;
+  border-radius: 14px;
+  padding: 12px 10px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 120ms ease, opacity 120ms ease, background 120ms ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+
+.primary-btn {
+  color: #04131e;
+  background: linear-gradient(135deg, #67e8f9, #38bdf8);
+}
+
+.ghost-btn {
+  color: var(--text);
+  background: rgba(30, 41, 59, 0.8);
+}
+
+.status-pill[data-state="blocked"] {
+  background: rgba(127, 29, 29, 0.55);
+  border-color: rgba(251, 113, 133, 0.22);
+}
+
+.status-pill[data-state="ready"] {
+  background: rgba(12, 74, 110, 0.6);
+}

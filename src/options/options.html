@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velocity Player Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="page-hero">
+      <div>
+        <p class="eyebrow">Velocity Player</p>
+        <h1>Settings</h1>
+        <p class="subtitle">Global defaults for playback, shortcuts, overlay behavior, and site blocking.</p>
+      </div>
+      <div class="save-state" id="save-state">Unsaved changes</div>
+    </section>
+
+    <section class="panel">
+      <h2>Behavior</h2>
+      <div class="grid two-up">
+        <label class="field toggle-field">
+          <span>Speed controls</span>
+          <input type="checkbox" id="speedEnabled">
+        </label>
+        <label class="field toggle-field">
+          <span>Theater mode controls</span>
+          <input type="checkbox" id="fullWindowEnabled">
+        </label>
+        <label class="field toggle-field">
+          <span>Floating overlay</span>
+          <input type="checkbox" id="overlayEnabled">
+        </label>
+        <label class="field toggle-field">
+          <span>Preserve pitch</span>
+          <input type="checkbox" id="preservesPitch">
+        </label>
+        <label class="field">
+          <span>Speed step</span>
+          <input type="number" id="speedStep" min="0.05" max="1" step="0.05">
+        </label>
+        <label class="field">
+          <span>Seek step (seconds)</span>
+          <input type="number" id="seekStep" min="1" max="60" step="1">
+        </label>
+        <label class="field">
+          <span>Overlay timeout (ms)</span>
+          <input type="number" id="overlayTimeout" min="500" max="10000" step="100">
+        </label>
+        <label class="field">
+          <span>Theme</span>
+          <select id="theme">
+            <option value="auto">Auto</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Shortcuts</h2>
+      <div class="grid shortcut-grid" id="shortcut-grid"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Blocklist</h2>
+      <label class="field textarea-field">
+        <span>Disable Velocity Player on these domains</span>
+        <textarea id="blocklist" rows="5" placeholder="netflix.com&#10;spotify.com"></textarea>
+      </label>
+    </section>
+
+    <section class="panel note-panel">
+      <h2>Scaffold Status</h2>
+      <p>Audio boost, EQ, presets, screenshots with subtitles, A-B loop UI, license validation, and per-site memory are scaffolded in code but not fully surfaced in this settings page yet.</p>
+    </section>
+
+    <div class="sticky-actions">
+      <button type="button" class="ghost-btn" id="reset-btn">Reset defaults</button>
+      <button type="button" class="primary-btn" id="save-btn">Save settings</button>
+    </div>
+  </main>
+
+  <script src="options.js"></script>
+</body>
+</html>

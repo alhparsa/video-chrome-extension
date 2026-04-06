@@ -1,15 +1,15 @@
 {
   "manifest_version": 3,
-  "name": "Full Window Video",
+  "name": "Velocity Player",
   "version": "1.0.0",
-  "description": "Make any playing video fill the browser window without native fullscreen",
+  "description": "Universal media controller for video and audio on any website.",
   "permissions": [
     "activeTab",
     "scripting",
     "storage"
   ],
   "options_ui": {
-    "page": "options.html",
+    "page": "src/options/options.html",
     "open_in_tab": true
   },
   "action": {
@@ -19,18 +19,37 @@
       "48": "icons/icon48.png",
       "128": "icons/icon128.png"
     },
-    "default_title": "Full Window Video (Alt+F)",
-    "default_popup": "popup.html"
+    "default_title": "Velocity Player",
+    "default_popup": "src/popup/popup.html"
   },
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "src/background/service-worker.js"
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content.js"],
+      "js": [
+        "src/content/storage-bridge.js",
+        "src/content/media-detector.js",
+        "src/content/speed-controller.js",
+        "src/content/audio-engine.js",
+        "src/content/video-display.js",
+        "src/content/loop-controller.js",
+        "src/content/screenshot.js",
+        "src/content/overlay-ui.js",
+        "src/content/shortcut-handler.js",
+        "src/content/main.js"
+      ],
       "all_frames": true,
       "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "src/styles/overlay.css"
+      ],
+      "matches": ["<all_urls>"]
     }
   ],
   "commands": {
@@ -39,7 +58,7 @@
         "default": "Alt+F",
         "mac": "Ctrl+F"
       },
-      "description": "Toggle full window video"
+      "description": "Toggle theater mode for the active video"
     }
   },
   "icons": {
